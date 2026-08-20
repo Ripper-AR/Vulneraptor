@@ -217,18 +217,10 @@ def run_recon_scan(target):
         "errors": []
     }
 
-    # -------------------------
-    # Target validation
-    # -------------------------
-
     if not validate_target(target):
         result["status"] = "error"
         result["errors"].append("Invalid target")
         return result
-
-    # -------------------------
-    # Port scanning
-    # -------------------------
 
     ports = [
         21, 22, 23, 25, 53,
@@ -247,23 +239,12 @@ def run_recon_scan(target):
 
     result["host"]["reachable"] = True
 
-    # -------------------------
-    # Service detection
-    # -------------------------
-
     services = detect_services(target, open_ports)
     result["services"] = services
 
-    # -------------------------
-    # Web service detection
-    # -------------------------
 
     web_services = detect_http(target, open_ports)
     result["web_services"] = web_services
-
-    # -------------------------
-    # HTTP Recon + Crawling
-    # -------------------------
 
     http_results = []
 
@@ -279,12 +260,7 @@ def run_recon_scan(target):
 
     result["http_results"] = http_results
 
-    # Remove duplicate endpoints
     result["endpoints"] = sorted(set(result["endpoints"]))
-
-    # -------------------------
-    # OS Clues
-    # -------------------------
 
     os_clues = detect_os_clues(
         services,
@@ -319,10 +295,7 @@ if __name__ == "__main__":
         for port in recon_data["ports"]:
             print(f"    - {port}")
 
-        # -------------------------
-        # Services
-        # -------------------------
-
+       
         print("\n[+] Service Detection")
 
         for service in recon_data["services"]:
@@ -334,10 +307,6 @@ if __name__ == "__main__":
                 print(f"    Banner: {service['banner']}")
             else:
                 print("    Banner: Not available")
-
-        # -------------------------
-        # Web Services
-        # -------------------------
 
         print("\n[+] Web Services")
 
@@ -351,10 +320,6 @@ if __name__ == "__main__":
 
         else:
             print("    No web services found")
-
-        # -------------------------
-        # HTTP Recon
-        # -------------------------
 
         print("\n[+] HTTP Recon")
 
@@ -384,10 +349,6 @@ if __name__ == "__main__":
                     f"{http_info['error']}"
                 )
 
-        # -------------------------
-        # Endpoint Crawling
-        # -------------------------
-
         print("\n[+] Endpoint Crawling")
 
         if recon_data["endpoints"]:
@@ -397,10 +358,6 @@ if __name__ == "__main__":
 
         else:
             print("    No endpoints found")
-
-        # -------------------------
-        # OS Clues
-        # -------------------------
 
         print("\n[+] OS Clues")
 
