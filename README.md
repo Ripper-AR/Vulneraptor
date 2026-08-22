@@ -15,89 +15,35 @@ Only scan systems you own or are explicitly authorized to assess.
 on windoes:
 python -m pip install -r requirements.txt
 -----------------------------------------------------
-on linux:
-1. Copy your project to /opt
-
-If your project is currently:
-
-~/VulCheck
-
-run:
-
-sudo mkdir -p /opt/VulCheck
-sudo cp -r ~/VulCheck/* /opt/VulCheck/
-
-Check:
-
-ls /opt/VulCheck
-2. Create the virtual environment
-cd /opt/VulCheck
-sudo apt update
-sudo apt install python3-venv python3-full
-
-Then:
-
-sudo python3 -m venv /opt/VulCheck/.venv
-
-Install your dependencies:
-
-sudo /opt/VulCheck/.venv/bin/python -m pip install --upgrade pip
-sudo /opt/VulCheck/.venv/bin/python -m pip install -r /opt/VulCheck/requirements.txt
-
-This avoids Kali's externally-managed-environment problem.
-
-3. Make main.py executable through a global command
-
-Create:
-
-sudo nano /usr/local/bin/VulCheck
-
-Put this inside:
-
-#!/bin/bash
-
-
-exec /opt/VulCheck/.venv/bin/python /opt/VulCheck/main.py "$@"
-
-Save:
-
-CTRL+O
-ENTER
-CTRL+X
-
-Then:
-
-sudo chmod +x /usr/local/bin/VulCheck
-4. Test the command
-
-Now you should be able to run:
-
-VulCheck
-
-or:
-
-VulCheck 192.168.64.129
-
-or, depending on your main.py CLI:
-
-VulCheck --target 192.168.64.129
-
-The important part is that you don't need to activate .venv.
-
-5. Make sure Nmap is available
-
-Since your current integrated Recon version is using Nmap, install it normally through Kali:
+Install on Kali
 
 sudo apt update
-sudo apt install nmap
+sudo apt install python3 python3-venv python3-full nmap
+sudo apt install ./vulcheck_1.0.0_all.deb
 
-Check:
+Then test:
 
-nmap --version
+vulcheck --help
+vulcheck -t 192.168.64.129
 
-Then:
+The package installs the application under /opt/VulCheck and creates the
+vulcheck command in /usr/local/bin.
 
-VulCheck 192.168.64.129
+Transfer to another Kali machine
+
+Copy vulcheck_1.0.0_all.deb to the other machine, then run:
+
+sudo apt update
+sudo apt install python3 python3-venv python3-full nmap
+sudo apt install ./vulcheck_1.0.0_all.deb
+
+Important
+
+The package currently contains the integrated Recon + Security Configuration
+version. XSS and SQLi are represented by the integration layer as skipped
+until their scanner modules are added.
+
+Only scan systems you own or are explicitly authorized to assess.
 
 ```
 
