@@ -35,7 +35,7 @@ Copy vulcheck_1.0.0_all.deb to the other machine, then run:
 
 sudo apt update
 sudo apt install python3 python3-venv python3-full nmap
-sudo apt install ./vulcheck_1.0.0_all.deb
+sudo apt install ./vulcheck_2.0.0_all.deb
 
 Important
 
