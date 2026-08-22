@@ -16,15 +16,16 @@ on windoes:
 python -m pip install -r requirements.txt
 -----------------------------------------------------
 Install on Kali
-
+git clone https://github.com/sal-mah/VulCheck.git
+cd VulCheck 
 sudo apt update
 sudo apt install python3 python3-venv python3-full nmap
-sudo apt install ./vulcheck_1.0.0_all.deb
+sudo apt install ./vulcheck_2.0.0_all.deb
 
 Then test:
-
+vulcheck "target"
 vulcheck --help
-vulcheck -t 192.168.64.129
+vulcheck --target "target"
 
 The package installs the application under /opt/VulCheck and creates the
 vulcheck command in /usr/local/bin.
