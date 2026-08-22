@@ -18,7 +18,7 @@ Then in another terminal, scan it:
 WARNING: deliberately vulnerable. Only run this locally for testing your
 own scanner - never expose it to a network beyond 127.0.0.1.
 """
-
+"""
 import sqlite3
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -74,3 +74,4 @@ if __name__ == "__main__":
     print(f"Vulnerable test app running at http://127.0.0.1:{port}/user?username=admin")
     print("Only accessible on localhost. Press Ctrl+C to stop.")
     HTTPServer(("127.0.0.1", port), Handler).serve_forever()
+"""
