@@ -1,11 +1,16 @@
 from __future__ import annotations
 
 import argparse
+<<<<<<< HEAD
 from contextlib import redirect_stdout
 from io import StringIO
 import json
 import sys
 import textwrap
+=======
+import json
+import sys
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
 from pathlib import Path
 from typing import Any
 
@@ -19,8 +24,11 @@ DEPENDENCY_HINTS = {
     "bs4": "beautifulsoup4",
     "requests": "requests",
 }
+<<<<<<< HEAD
 DEFAULT_JSON_FILE = str(Path(DEFAULT_REPORT_DIR) / "scan.json")
 DEFAULT_PDF_FILE = str(Path(DEFAULT_REPORT_DIR) / "scan.pdf")
+=======
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
 
 
 def load_targets(filename: str) -> list[str]:
@@ -45,6 +53,7 @@ def save_json(data: Any, filename: str) -> Path:
     return output_path
 
 
+<<<<<<< HEAD
 def render_report_text(data: Any) -> str:
     reports = data if isinstance(data, list) else [data]
     sections: list[str] = []
@@ -185,6 +194,8 @@ def save_pdf(data: Any, filename: str) -> Path:
     return output_path
 
 
+=======
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="VulnScope Lite integrated vulnerability scanner"
@@ -201,6 +212,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--json",
         dest="json_file",
+<<<<<<< HEAD
         nargs="?",
         const=DEFAULT_JSON_FILE,
         metavar="JSON_FILE",
@@ -228,6 +240,9 @@ def build_parser() -> argparse.ArgumentParser:
         "--ai-url",
         default="http://127.0.0.1:11434",
         help="Ollama API base URL (default: http://127.0.0.1:11434).",
+=======
+        help=f"Save report JSON. Defaults to {DEFAULT_REPORT_DIR}/scan.json.",
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
     )
     return parser
 
@@ -287,40 +302,54 @@ def main() -> None:
         reports = []
         for index, target in enumerate(targets, start=1):
             print(f"\n[{index}/{len(targets)}] {target}")
+<<<<<<< HEAD
             report = run_integrated_scan(
                 require_target(target),
                 ai_enabled=args.ai,
                 ai_model=args.ai_model,
                 ai_url=args.ai_url,
             )
+=======
+            report = run_integrated_scan(require_target(target))
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
             print_integrated_report(report)
             reports.append(report)
 
         if args.json_file:
             output_path = save_json(reports, args.json_file)
             print(f"\n[+] JSON reports saved to: {output_path}")
+<<<<<<< HEAD
         if args.pdf_file:
             output_path = save_pdf(reports, args.pdf_file)
             print(f"\n[+] PDF reports saved to: {output_path}")
+=======
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
         return
 
     target = args.target or input("Enter target IP, domain, or URL: ")
     target = require_target(target)
 
+<<<<<<< HEAD
     report = run_integrated_scan(
         target,
         ai_enabled=args.ai,
         ai_model=args.ai_model,
         ai_url=args.ai_url,
     )
+=======
+    report = run_integrated_scan(target)
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
     print_integrated_report(report)
 
     if args.json_file:
         output_path = save_json(report, args.json_file)
         print(f"\n[+] JSON report saved to: {output_path}")
+<<<<<<< HEAD
     if args.pdf_file:
         output_path = save_pdf(report, args.pdf_file)
         print(f"\n[+] PDF report saved to: {output_path}")
+=======
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
 
 
 if __name__ == "__main__":

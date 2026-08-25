@@ -15,7 +15,10 @@ from modules.recon import run_recon_scan
 from modules.security_config import run_security_config_scan
 from modules.sqli_scanner import run_sqli_scanner
 from modules.xss_scanner import run_xss_scan
+<<<<<<< HEAD
 from modules.ollama_analyzer import analyze_results, check_ollama
+=======
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
 
 
 ScannerCallable = Callable[..., dict[str, Any]]
@@ -38,12 +41,16 @@ def _run_safely(
         return scanner_error(module_name, target, error)
 
 
+<<<<<<< HEAD
 def run_integrated_scan(
     target: str,
     ai_enabled: bool = False,
     ai_model: str = "qwen3.5:4b",
     ai_url: str = "http://127.0.0.1:11434",
 ) -> dict[str, Any]:
+=======
+def run_integrated_scan(target: str) -> dict[str, Any]:
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
     started = now_iso()
     modules: dict[str, dict[str, Any]] = {}
 
@@ -83,7 +90,11 @@ def run_integrated_scan(
     if any(result.get("status") == "error" for result in modules.values()):
         status = "partial/error"
 
+<<<<<<< HEAD
     report = {
+=======
+    return {
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
         "tool": TOOL_NAME,
         "integration_version": INTEGRATION_VERSION,
         "target": target,
@@ -94,6 +105,7 @@ def run_integrated_scan(
         "modules": modules,
         "summary": summary,
         "findings": findings,
+<<<<<<< HEAD
         "ai": {
             "enabled": ai_enabled,
             "status": "not_requested",
@@ -125,3 +137,6 @@ def run_integrated_scan(
             }
 
     return report
+=======
+    }
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f

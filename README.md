@@ -64,6 +64,7 @@ python main.py --target-file targets.txt --json reports/batch.json
 ```bash
 python -m pytest -q
 ```
+<<<<<<< HEAD
 
 
 ## Local Ollama AI
@@ -117,3 +118,5 @@ python test_ollama_generate.py
 
 The integration disables Qwen thinking for the report call and accepts
 both Ollama generate and message-style response fields.
+=======
+>>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
