@@ -1,0 +1,1441 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R 24 0 R] /Count 11 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2343 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(==============================================================================) Tj
+T*
+(VULNSCOPE LITE - FULL INTEGRATED SCAN OUTPUT) Tj
+T*
+(==============================================================================) Tj
+T*
+(Target: https://www.hackerone.com/) Tj
+T*
+(Execution Order: Recon -> XSS -> SQL Injection -> Security Config -> Ollama AI) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(RECON MODULE) Tj
+T*
+(==============================================================================) Tj
+T*
+(Status: success) Tj
+T*
+(Target: https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Target Validation:) Tj
+T*
+(  Target is valid.) Tj
+T*
+() Tj
+T*
+(Host Reachability:) Tj
+T*
+(  Reachable: True) Tj
+T*
+() Tj
+T*
+(Port Scan Configuration:) Tj
+T*
+(  Source: C:\\Users\\Khale\\Desktop\\NTI PROJECT\\VulCheck-main\\all_ports_list.txt) Tj
+T*
+(  Total configured entries: 112) Tj
+T*
+(  Ports/Ranges:) Tj
+T*
+(    1, 5, 7, 9, 11, 13, 17, 19, 20, 21, 22, 23, 25, 37, 43, 49, 53, 67, 68, 69, 70, 79, 80, 88, 109,) Tj
+T*
+( 110, 111, 113, 115, 118, 119, 123, 135, 137, 138, 139, 143, 156, 161, 162, 179, 194, 201, 220, 389,) Tj
+T*
+( 443, 444, 445, 464, 465, 500, 514, 515, 520, 530, 543, 544, 546, 547, 548, 554, 563, 587, 631, 636,) Tj
+T*
+( 873, 989, 990, 992, 993, 995, 1080, 1194, 1234, 1433, 1434, 1521, 1701, 1723, 1812, 1813, 1900, ) Tj
+T*
+(2049, 2181, 2375, 2376, 3000, 3306, 3389, 3690, 4500, 4840, 5000, 5060, 5061, 5222, 5432, 5672, ) Tj
+T*
+(5900, 6379, 8000, 8080, 8443, 8888, 9000, 9092, 9200, 9300, 11211, 25565, 27017, 49152-65535) Tj
+T*
+() Tj
+T*
+(Open Ports:) Tj
+T*
+(  - 80) Tj
+T*
+(  - 443) Tj
+T*
+(  - 8080) Tj
+T*
+(  - 8443) Tj
+T*
+() Tj
+T*
+(Service Detection:) Tj
+T*
+() Tj
+T*
+(  Port: 80) Tj
+T*
+(  Service: http) Tj
+T*
+(  Product: Cloudflare http proxy) Tj
+T*
+(  Banner: Not available) Tj
+T*
+() Tj
+T*
+(  Port: 443) Tj
+T*
+(  Service: http) Tj
+T*
+(  Product: Cloudflare http proxy) Tj
+T*
+(  Banner: Not available) Tj
+T*
+() Tj
+T*
+(  Port: 8080) Tj
+T*
+(  Service: http) Tj
+T*
+(  Product: Cloudflare http proxy) Tj
+T*
+(  Banner: Not available) Tj
+T*
+() Tj
+T*
+(  Port: 8443) Tj
+T*
+(  Service: http) Tj
+T*
+(  Product: Cloudflare http proxy) Tj
+T*
+(  Banner: Not available) Tj
+T*
+() Tj
+T*
+(Web Services:) Tj
+T*
+(  - HTTPS -> https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3364 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(HTTP Recon:) Tj
+T*
+() Tj
+T*
+(  URL: https://www.hackerone.com/) Tj
+T*
+(  Status Code: 200) Tj
+T*
+(  Server: cloudflare) Tj
+T*
+(  X-Powered-By: None) Tj
+T*
+(  Content-Type: text/html; charset=utf-8) Tj
+T*
+() Tj
+T*
+(Endpoint Crawling:) Tj
+T*
+(  - https://www.hackerone.com/) Tj
+T*
+(  - https://www.hackerone.com/#) Tj
+T*
+(  - https://www.hackerone.com/#main-content) Tj
+T*
+(  - https://www.hackerone.com/#wistia_z2movi2qn0) Tj
+T*
+(  - https://www.hackerone.com/blog) Tj
+T*
+(  - https://www.hackerone.com/blog/finding-fast-fixing-slow-rising-exposure-debt) Tj
+T*
+(  - https://www.hackerone.com/careers) Tj
+T*
+(  - https://www.hackerone.com/company) Tj
+T*
+(  - https://www.hackerone.com/company/leadership) Tj
+T*
+(  - https://www.hackerone.com/company/newsroom) Tj
+T*
+(  - https://www.hackerone.com/company/open-source-community) Tj
+T*
+(  - https://www.hackerone.com/company/public-policy) Tj
+T*
+(  - https://www.hackerone.com/contact) Tj
+T*
+(  - https://www.hackerone.com/contact/security-incident) Tj
+T*
+(  - https://www.hackerone.com/customer-stories/shopify-hai) Tj
+T*
+(  - https://www.hackerone.com/customer-stories/snap) Tj
+T*
+(  - https://www.hackerone.com/events) Tj
+T*
+(  - https://www.hackerone.com/hackerone-customer-stories) Tj
+T*
+(  - https://www.hackerone.com/hackers) Tj
+T*
+(  - https://www.hackerone.com/hackers/ambassador-world-cup) Tj
+T*
+(  - https://www.hackerone.com/hackers/how-to-start-hacking) Tj
+T*
+(  - https://www.hackerone.com/knowledge-center/16-types-cybersecurity-attacks-and-how-prevent-them) Tj
+T*
+(  - ) Tj
+T*
+(https://www.hackerone.com/knowledge-center/what-application-security-concepts-tools-best-practices) Tj
+T*
+(  - https://www.hackerone.com/knowledge-center/what-hacking-black-hat-white-hat-blue-hat-and-more) Tj
+T*
+(  - https://www.hackerone.com/knowledge-center/what-is-penetration-testing-as-a-service) Tj
+T*
+(  - https://www.hackerone.com/partners) Tj
+T*
+(  - https://www.hackerone.com/partners/aws) Tj
+T*
+(  - https://www.hackerone.com/partners/find-a-partner) Tj
+T*
+(  - https://www.hackerone.com/partners/integrations) Tj
+T*
+(  - https://www.hackerone.com/partners/technology-alliance-program) Tj
+T*
+(  - https://www.hackerone.com/platform) Tj
+T*
+(  - https://www.hackerone.com/platform/community) Tj
+T*
+(  - https://www.hackerone.com/platform/hai) Tj
+T*
+(  - https://www.hackerone.com/policies) Tj
+T*
+(  - https://www.hackerone.com/policies/privacy) Tj
+T*
+(  - https://www.hackerone.com/product/ai-red-teaming) Tj
+T*
+(  - https://www.hackerone.com/product/bug-bounty-platform) Tj
+T*
+(  - https://www.hackerone.com/product/challenge) Tj
+T*
+(  - https://www.hackerone.com/product/code) Tj
+T*
+(  - https://www.hackerone.com/product/h1-continuous-testing) Tj
+T*
+(  - https://www.hackerone.com/product/h1-remediation) Tj
+T*
+(  - https://www.hackerone.com/product/h1-validation) Tj
+T*
+(  - https://www.hackerone.com/product/pentest) Tj
+T*
+(  - https://www.hackerone.com/product/response-vulnerability-disclosure-program) Tj
+T*
+(  - https://www.hackerone.com/report/future-of-ai) Tj
+T*
+(  - https://www.hackerone.com/report/hacker-powered-security) Tj
+T*
+(  - https://www.hackerone.com/report/security-testing-for-ai-coverage-gap) Tj
+T*
+(  - https://www.hackerone.com/resources) Tj
+T*
+(  - https://www.hackerone.com/resources/customer-story) Tj
+T*
+(  - https://www.hackerone.com/solutions) Tj
+T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2806 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(  - https://www.hackerone.com/solutions/adversarial-exposure-validation) Tj
+T*
+(  - https://www.hackerone.com/solutions/ai) Tj
+T*
+(  - https://www.hackerone.com/solutions/application-security-testing-software) Tj
+T*
+(  - https://www.hackerone.com/solutions/automotive-and-transportation) Tj
+T*
+(  - https://www.hackerone.com/solutions/cloud-security-solution) Tj
+T*
+(  - https://www.hackerone.com/solutions/continuous-security-testing) Tj
+T*
+(  - https://www.hackerone.com/solutions/continuous-threat-exposure-management) Tj
+T*
+(  - https://www.hackerone.com/solutions/continuous-vulnerability-testing) Tj
+T*
+(  - https://www.hackerone.com/solutions/crowdsourced-security) Tj
+T*
+(  - https://www.hackerone.com/solutions/crypto-blockchain) Tj
+T*
+(  - https://www.hackerone.com/solutions/financial-services) Tj
+T*
+(  - https://www.hackerone.com/solutions/healthcare) Tj
+T*
+(  - https://www.hackerone.com/solutions/public-sector) Tj
+T*
+(  - https://www.hackerone.com/solutions/retail-ecommerce) Tj
+T*
+(  - https://www.hackerone.com/solutions/retail-hospitality-and-entertainment) Tj
+T*
+(  - https://www.hackerone.com/solutions/uk-government) Tj
+T*
+(  - https://www.hackerone.com/solutions/united-states-federal) Tj
+T*
+(  - https://www.hackerone.com/solutions/vulnerability-management-system) Tj
+T*
+(  - https://www.hackerone.com/solutions/web3) Tj
+T*
+(  - https://www.hackerone.com/terms) Tj
+T*
+(  - https://www.hackerone.com/trust) Tj
+T*
+(  - https://www.hackerone.com/vulnerability-disclosure-policy-map) Tj
+T*
+() Tj
+T*
+(OS Clues:) Tj
+T*
+(  No OS clues found.) Tj
+T*
+() Tj
+T*
+(Findings:) Tj
+T*
+(  Recon does not currently emit vulnerability findings.) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(XSS SCANNER MODULE) Tj
+T*
+(==============================================================================) Tj
+T*
+(Status: success) Tj
+T*
+(Target: https://www.hackerone.com/) Tj
+T*
+(Marker: VulnScopeXSS) Tj
+T*
+(Max Pages: 20) Tj
+T*
+() Tj
+T*
+(Web Targets From Recon:) Tj
+T*
+(  - https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Pages Scanned:) Tj
+T*
+(  - https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Per-Page XSS Checks:) Tj
+T*
+() Tj
+T*
+(  Requested URL: https://www.hackerone.com/) Tj
+T*
+(  Final URL: https://www.hackerone.com/) Tj
+T*
+(  Query Parameters: None) Tj
+T*
+(  Forms: None) Tj
+T*
+(  Same-Origin Links Found: 69) Tj
+T*
+(  Parameterized Links Found: 0) Tj
+T*
+() Tj
+T*
+(Findings:) Tj
+T*
+(  No reflected XSS findings detected.) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(SQL INJECTION SCANNER MODULE) Tj
+T*
+(==============================================================================) Tj
+T*
+(Status: skipped) Tj
+T*
+(Target: https://www.hackerone.com/) Tj
+T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 3674 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(Reason: No parameterized URLs were discovered by Recon.) Tj
+T*
+() Tj
+T*
+(Candidate URLs From Recon:) Tj
+T*
+(  - https://www.hackerone.com/) Tj
+T*
+(  - https://www.hackerone.com/#) Tj
+T*
+(  - https://www.hackerone.com/#main-content) Tj
+T*
+(  - https://www.hackerone.com/#wistia_z2movi2qn0) Tj
+T*
+(  - https://www.hackerone.com/blog) Tj
+T*
+(  - https://www.hackerone.com/blog/finding-fast-fixing-slow-rising-exposure-debt) Tj
+T*
+(  - https://www.hackerone.com/careers) Tj
+T*
+(  - https://www.hackerone.com/company) Tj
+T*
+(  - https://www.hackerone.com/company/leadership) Tj
+T*
+(  - https://www.hackerone.com/company/newsroom) Tj
+T*
+(  - https://www.hackerone.com/company/open-source-community) Tj
+T*
+(  - https://www.hackerone.com/company/public-policy) Tj
+T*
+(  - https://www.hackerone.com/contact) Tj
+T*
+(  - https://www.hackerone.com/contact/security-incident) Tj
+T*
+(  - https://www.hackerone.com/customer-stories/shopify-hai) Tj
+T*
+(  - https://www.hackerone.com/customer-stories/snap) Tj
+T*
+(  - https://www.hackerone.com/events) Tj
+T*
+(  - https://www.hackerone.com/hackerone-customer-stories) Tj
+T*
+(  - https://www.hackerone.com/hackers) Tj
+T*
+(  - https://www.hackerone.com/hackers/ambassador-world-cup) Tj
+T*
+(  - https://www.hackerone.com/hackers/how-to-start-hacking) Tj
+T*
+(  - https://www.hackerone.com/knowledge-center/16-types-cybersecurity-attacks-and-how-prevent-them) Tj
+T*
+(  - ) Tj
+T*
+(https://www.hackerone.com/knowledge-center/what-application-security-concepts-tools-best-practices) Tj
+T*
+(  - https://www.hackerone.com/knowledge-center/what-hacking-black-hat-white-hat-blue-hat-and-more) Tj
+T*
+(  - https://www.hackerone.com/knowledge-center/what-is-penetration-testing-as-a-service) Tj
+T*
+(  - https://www.hackerone.com/partners) Tj
+T*
+(  - https://www.hackerone.com/partners/aws) Tj
+T*
+(  - https://www.hackerone.com/partners/find-a-partner) Tj
+T*
+(  - https://www.hackerone.com/partners/integrations) Tj
+T*
+(  - https://www.hackerone.com/partners/technology-alliance-program) Tj
+T*
+(  - https://www.hackerone.com/platform) Tj
+T*
+(  - https://www.hackerone.com/platform/community) Tj
+T*
+(  - https://www.hackerone.com/platform/hai) Tj
+T*
+(  - https://www.hackerone.com/policies) Tj
+T*
+(  - https://www.hackerone.com/policies/privacy) Tj
+T*
+(  - https://www.hackerone.com/product/ai-red-teaming) Tj
+T*
+(  - https://www.hackerone.com/product/bug-bounty-platform) Tj
+T*
+(  - https://www.hackerone.com/product/challenge) Tj
+T*
+(  - https://www.hackerone.com/product/code) Tj
+T*
+(  - https://www.hackerone.com/product/h1-continuous-testing) Tj
+T*
+(  - https://www.hackerone.com/product/h1-remediation) Tj
+T*
+(  - https://www.hackerone.com/product/h1-validation) Tj
+T*
+(  - https://www.hackerone.com/product/pentest) Tj
+T*
+(  - https://www.hackerone.com/product/response-vulnerability-disclosure-program) Tj
+T*
+(  - https://www.hackerone.com/report/future-of-ai) Tj
+T*
+(  - https://www.hackerone.com/report/hacker-powered-security) Tj
+T*
+(  - https://www.hackerone.com/report/security-testing-for-ai-coverage-gap) Tj
+T*
+(  - https://www.hackerone.com/resources) Tj
+T*
+(  - https://www.hackerone.com/resources/customer-story) Tj
+T*
+(  - https://www.hackerone.com/solutions) Tj
+T*
+(  - https://www.hackerone.com/solutions/adversarial-exposure-validation) Tj
+T*
+(  - https://www.hackerone.com/solutions/ai) Tj
+T*
+(  - https://www.hackerone.com/solutions/application-security-testing-software) Tj
+T*
+(  - https://www.hackerone.com/solutions/automotive-and-transportation) Tj
+T*
+(  - https://www.hackerone.com/solutions/cloud-security-solution) Tj
+T*
+(  - https://www.hackerone.com/solutions/continuous-security-testing) Tj
+T*
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 2448 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(  - https://www.hackerone.com/solutions/continuous-threat-exposure-management) Tj
+T*
+(  - https://www.hackerone.com/solutions/continuous-vulnerability-testing) Tj
+T*
+(  - https://www.hackerone.com/solutions/crowdsourced-security) Tj
+T*
+(  - https://www.hackerone.com/solutions/crypto-blockchain) Tj
+T*
+(  - https://www.hackerone.com/solutions/financial-services) Tj
+T*
+(  - https://www.hackerone.com/solutions/healthcare) Tj
+T*
+(  - https://www.hackerone.com/solutions/public-sector) Tj
+T*
+(  - https://www.hackerone.com/solutions/retail-ecommerce) Tj
+T*
+(  - https://www.hackerone.com/solutions/retail-hospitality-and-entertainment) Tj
+T*
+(  - https://www.hackerone.com/solutions/uk-government) Tj
+T*
+(  - https://www.hackerone.com/solutions/united-states-federal) Tj
+T*
+(  - https://www.hackerone.com/solutions/vulnerability-management-system) Tj
+T*
+(  - https://www.hackerone.com/solutions/web3) Tj
+T*
+(  - https://www.hackerone.com/terms) Tj
+T*
+(  - https://www.hackerone.com/trust) Tj
+T*
+(  - https://www.hackerone.com/vulnerability-disclosure-policy-map) Tj
+T*
+() Tj
+T*
+(Parameterized URLs Tested:) Tj
+T*
+(  No parameterized URLs tested.) Tj
+T*
+() Tj
+T*
+(Payload Families:) Tj
+T*
+(  - error-based) Tj
+T*
+(  - boolean-based) Tj
+T*
+(  - time-based) Tj
+T*
+() Tj
+T*
+(Baseline Requests:) Tj
+T*
+(  No successful baseline requests recorded.) Tj
+T*
+() Tj
+T*
+(Parameters Tested:) Tj
+T*
+(  No parameters tested.) Tj
+T*
+() Tj
+T*
+(Findings:) Tj
+T*
+(  No SQL injection findings detected.) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(SECURITY CONFIGURATION MODULE) Tj
+T*
+(==============================================================================) Tj
+T*
+(Version: 2.1.0) Tj
+T*
+(Status: success) Tj
+T*
+(Scan Time UTC: 2026-08-25T17:45:21.444482+00:00) Tj
+T*
+(Target: https://www.hackerone.com/) Tj
+T*
+(Recon Used: True) Tj
+T*
+() Tj
+T*
+(Web Targets:) Tj
+T*
+(  - https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Services Checked:) Tj
+T*
+(  No service rules applied.) Tj
+T*
+() Tj
+T*
+(------------------------------------------------------------------------------) Tj
+T*
+(Security Configuration Risk Summary) Tj
+T*
+(------------------------------------------------------------------------------) Tj
+T*
+(Risk Score: 5) Tj
+T*
+(Critical  : 0) Tj
+T*
+(High      : 0) Tj
+T*
+(Medium    : 1) Tj
+T*
+(Low       : 2) Tj
+T*
+(Info      : 1) Tj
+T*
+() Tj
+T*
+(Security Findings: 2) Tj
+T*
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 2568 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(Hardening Recommendations: 1) Tj
+T*
+(Observations: 1) Tj
+T*
+(Total: 4) Tj
+T*
+() Tj
+T*
+(Findings:) Tj
+T*
+() Tj
+T*
+(------------------------------------------------------------------------------) Tj
+T*
+([MEDIUM] Weak Content-Security-Policy) Tj
+T*
+(Type: Security Header Quality) Tj
+T*
+(Category: Security Header Quality) Tj
+T*
+(Classification: Finding) Tj
+T*
+(Confidence: High) Tj
+T*
+(URL: https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Finding:) Tj
+T*
+(The target has a CSP, but it contains permissive directives that reduce its protective value.) Tj
+T*
+() Tj
+T*
+(Detected:) Tj
+T*
+(Detected weak directives: 'unsafe-inline', 'unsafe-eval') Tj
+T*
+(CSP: default-src 'self' https:; connect-src 'self' https: wss://*.visitors.live ) Tj
+T*
+(wss://realtime.luckyorange.com/mqtt wss://in.visitors.live wss://*.qualified.com; font-src 'self' ) Tj
+T*
+(https: data:; img-src 'self' https: data: blob:; media-src 'self' blob: https://embed-ssl.wistia.com) Tj
+T*
+( https://assets.qualified.com; object-src 'none'; script-src 'self' 'report-sample' 'unsafe-inline' ) Tj
+T*
+('unsafe-eval' https:; style-src 'self' 'report-sample' 'unsafe-inline' https:; worker-src 'self' ) Tj
+T*
+(blob:; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests) Tj
+T*
+() Tj
+T*
+(Risk:) Tj
+T*
+(Overly broad CSP directives can reduce the protection CSP provides against injected or untrusted ) Tj
+T*
+(content.) Tj
+T*
+() Tj
+T*
+(Recommendation:) Tj
+T*
+(Replace broad directives with a restrictive policy. Avoid unsafe-inline/unsafe-eval where possible ) Tj
+T*
+(and avoid wildcard sources unless strictly required.) Tj
+T*
+() Tj
+T*
+(------------------------------------------------------------------------------) Tj
+T*
+([LOW] Missing Referrer-Policy) Tj
+T*
+(Type: Security Header) Tj
+T*
+(Category: Security Headers) Tj
+T*
+(Classification: Finding) Tj
+T*
+(Confidence: High) Tj
+T*
+(URL: https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Finding:) Tj
+T*
+(Controls how much referrer information is sent with requests.) Tj
+T*
+() Tj
+T*
+(Detected:) Tj
+T*
+(Referrer-Policy header is missing.) Tj
+T*
+() Tj
+T*
+(Risk:) Tj
+T*
+(The Referrer-Policy security control is not explicitly configured.) Tj
+T*
+() Tj
+T*
+(Recommendation:) Tj
+T*
+(Configure an appropriate Referrer-Policy such as strict-origin-when-cross-origin.) Tj
+T*
+() Tj
+T*
+(------------------------------------------------------------------------------) Tj
+T*
+([LOW] Missing Permissions-Policy) Tj
+T*
+(Type: Security Header) Tj
+T*
+(Category: Security Headers) Tj
+T*
+(Classification: Hardening) Tj
+T*
+(Confidence: High) Tj
+T*
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 2567 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(URL: https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Finding:) Tj
+T*
+(Restricts access to browser features and capabilities.) Tj
+T*
+() Tj
+T*
+(Detected:) Tj
+T*
+(Permissions-Policy header is missing.) Tj
+T*
+() Tj
+T*
+(Risk:) Tj
+T*
+(The Permissions-Policy security control is not explicitly configured.) Tj
+T*
+() Tj
+T*
+(Recommendation:) Tj
+T*
+(Configure Permissions-Policy to restrict browser features not required by the application.) Tj
+T*
+() Tj
+T*
+(------------------------------------------------------------------------------) Tj
+T*
+([INFO] Server Technology Fingerprinting Observed) Tj
+T*
+(Type: Information Disclosure) Tj
+T*
+(Category: Technology Fingerprinting) Tj
+T*
+(Classification: Observation) Tj
+T*
+(Confidence: High) Tj
+T*
+(URL: https://www.hackerone.com/) Tj
+T*
+() Tj
+T*
+(Finding:) Tj
+T*
+(The HTTP response reveals non-versioned technology information.) Tj
+T*
+() Tj
+T*
+(Detected:) Tj
+T*
+(Server: cloudflare) Tj
+T*
+() Tj
+T*
+(Risk:) Tj
+T*
+(This is useful for technology fingerprinting, but no specific software version is exposed.) Tj
+T*
+() Tj
+T*
+(Recommendation:) Tj
+T*
+(Treat this as an observation. Remove or minimize the header only when it is not required ) Tj
+T*
+(operationally.) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(OLLAMA LOCAL AI ANALYSIS) Tj
+T*
+(==============================================================================) Tj
+T*
+(Status: success) Tj
+T*
+(Model: qwen3.5:4b) Tj
+T*
+(API: http://127.0.0.1:11434) Tj
+T*
+() Tj
+T*
+(# VulnScope Lite Security Assessment Report) Tj
+T*
+() Tj
+T*
+(**Target:** `https://www.hackerone.com/`  ) Tj
+T*
+(**Scan Tool:** VulnScope Lite \(v2.1.0\)  ) Tj
+T*
+(**Scan Date:** August 25, 2026  ) Tj
+T*
+(**Analyst Role:** Local AI Security Analyst  ) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 1. Executive Summary) Tj
+T*
+(The automated security scan of `https://www.hackerone.com/` completed successfully with a **Risk ) Tj
+T*
+(Score of 5**. The assessment identified four primary findings: one medium-severity issue regarding ) Tj
+T*
+(Content-Security-Policy \(CSP\) configuration and three low-to-info severity observations related to ) Tj
+T*
+(missing or weak security headers. No active vulnerabilities such as Cross-Site Scripting \(XSS\) or ) Tj
+T*
+(SQL Injection were detected, primarily due to the absence of user-supplied input parameters during ) Tj
+T*
+(reconnaissance. The target is protected by Cloudflare but exhibits permissive security header ) Tj
+T*
+(configurations that could be hardened further.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 19 0 R >>
+endobj
+19 0 obj
+<< /Length 3738 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(---) Tj
+T*
+() Tj
+T*
+(## 2. Target and Reconnaissance Analysis) Tj
+T*
+(*   **Target Host:** `www.hackerone.com`) Tj
+T*
+(*   **Protocol & Port:** HTTPS \(Port 443\) via a proxy service.) Tj
+T*
+(*   **Infrastructure Provider:** Cloudflare \(`Server: cloudflare`\).) Tj
+T*
+(*   **Web Services Detected:** HTTP/HTTPS services on ports 80, 443, 8080, and 8443 are all ) Tj
+T*
+(identified as "Cloudflare http proxy." No direct application-level service banners were exposed.) Tj
+T*
+(*   **Reconnaissance Status:** Successful. The scanner mapped the domain structure, identifying ) Tj
+T*
+(numerous endpoints including blog posts, career pages, partner integrations, and product ) Tj
+T*
+(documentation \(e.g., `h1-continuous-testing`, `bug-bounty-platform`\).) Tj
+T*
+(*   **Observation:** The target utilizes a robust Content-Security-Policy header but contains ) Tj
+T*
+(permissive directives.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 3. XSS Analysis) Tj
+T*
+(*   **Module Status:** Success / No Findings.) Tj
+T*
+(*   **Scope:** Scanned the root domain \(`https://www.hackerone.com/`\) and discovered links to ) Tj
+T*
+(various sub-pages \(blogs, products, partners\).) Tj
+T*
+(*   **Findings:** None detected.) Tj
+T*
+(*   **Analysis:** The scanner did not identify any reflected or stored Cross-Site Scripting ) Tj
+T*
+(vulnerabilities in the scanned URLs. This is consistent with a modern application utilizing ) Tj
+T*
+(Cloudflare's WAF capabilities and strict CSP policies to mitigate script injection attempts at the ) Tj
+T*
+(network layer.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 4. SQL Injection Analysis) Tj
+T*
+(*   **Module Status:** Skipped / No Findings.) Tj
+T*
+(*   **Reason for Skip:** The Reconnaissance module failed to discover any parameterized URLs \(e.g., ) Tj
+T*
+(search forms, login inputs with query parameters\) suitable for automated injection testing.) Tj
+T*
+(*   **Implication:** Without identifiable input vectors, the SQL Injection scanner could not execute) Tj
+T*
+( payloads against potential database entry points. This does not confirm security; it indicates a ) Tj
+T*
+(lack of testable surface area in this specific scan run.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 5. Security Configuration Analysis) Tj
+T*
+(The following configuration issues were identified during the `security_config` module execution:) Tj
+T*
+() Tj
+T*
+(### A. Weak Content-Security-Policy \(Medium Severity\)) Tj
+T*
+(*   **Issue:** The CSP header contains permissive directives \(`'unsafe-inline'`, `'unsafe-eval'`\) ) Tj
+T*
+(and broad source lists.) Tj
+T*
+(*   **Evidence:** ) Tj
+T*
+(    ```text) Tj
+T*
+(    script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval' https:; ... style-src 'self' ) Tj
+T*
+('report-sample' 'unsafe-inline' https:;) Tj
+T*
+(    ```) Tj
+T*
+(*   **Risk Explanation:** The use of `'unsafe-inline'` allows JavaScript to be executed directly ) Tj
+T*
+(within HTML without sanitization, bypassing standard script context protections. While the presence ) Tj
+T*
+(of `upgrade-insecure-requests` and `base-uri 'self'` provides some defense in depth, retaining ) Tj
+T*
+(inline scripts significantly increases the attack surface for XSS if a new vulnerability is ) Tj
+T*
+(introduced or misconfigured content is served.) Tj
+T*
+() Tj
+T*
+(### B. Missing Referrer-Policy \(Low Severity\)) Tj
+T*
+(*   **Issue:** The response headers do not include a `Referrer-Policy`.) Tj
+T*
+(*   **Risk Explanation:** Without this header, browsers may send full URI referrers by default to ) Tj
+T*
+(cross-origin requests. This can expose sensitive information such as user session IDs or internal ) Tj
+T*
+(paths in server logs and analytics tools \(e.g., Google Analytics\), aiding privacy violations and ) Tj
+T*
+ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 21 0 R >>
+endobj
+21 0 obj
+<< /Length 3580 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(potential tracking abuse.) Tj
+T*
+() Tj
+T*
+(### C. Missing Permissions-Policy \(Low Severity\)) Tj
+T*
+(*   **Issue:** The response headers do not include a `Permissions-Policy`.) Tj
+T*
+(*   **Risk Explanation:** This header allows websites to restrict access to browser features like ) Tj
+T*
+(geolocation, camera, microphone, or push notifications. Its absence means the site cannot opt-out of) Tj
+T*
+( these permissions for third-party scripts \(like ads\), potentially leading to unwanted data ) Tj
+T*
+(collection via trackers embedded in content delivery networks.) Tj
+T*
+() Tj
+T*
+(### D. Server Technology Fingerprinting \(Info Severity\)) Tj
+T*
+(*   **Issue:** The `Server` header reveals "cloudflare".) Tj
+T*
+(*   **Risk Explanation:** While no specific version number is exposed, revealing the CDN provider ) Tj
+T*
+(aids attackers in identifying infrastructure patterns and potential misconfigurations associated ) Tj
+T*
+(with Cloudflare's default settings or plugins.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 6. Risk Assessment) Tj
+T*
+(| Severity | Count | Description |) Tj
+T*
+(| :--- | :---: | :--- |) Tj
+T*
+(| **Critical** | 0 | No critical vulnerabilities found. |) Tj
+T*
+(| **High** | 0 | No high-severity active exploits detected. |) Tj
+T*
+(| **Medium** | 1 | Weak CSP configuration reduces protection against injection attacks. |) Tj
+T*
+(| **Low** | 2 | Missing privacy-enhancing headers \(Referrer, Permissions\). |) Tj
+T*
+(| **Info** | 1 | Technology fingerprinting observed. |) Tj
+T*
+() Tj
+T*
+(*   **Overall Posture:** The target demonstrates a baseline of security through the use of ) Tj
+T*
+(Cloudflare and HTTPS enforcement \(`strict-transport-security`\). However, the reliance on permissive ) Tj
+T*
+(CSP directives represents a moderate risk that could be exploited if an attacker gains control over ) Tj
+T*
+(content rendering or exploits other zero-day flaws in the underlying CMS.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 7. Prioritized Remediation) Tj
+T*
+(Remediation efforts should focus first on reducing the attack surface defined by the Medium severity) Tj
+T*
+( finding, followed by privacy hardening.) Tj
+T*
+() Tj
+T*
+(1.  **Harden Content-Security-Policy \(Priority: High\)**) Tj
+T*
+(    *   Remove `'unsafe-inline'` and `'unsafe-eval'` directives immediately if they are not strictly) Tj
+T*
+( required for legacy functionality.) Tj
+T*
+(    *   Replace broad `https:` sources with specific domain names where possible to limit the scope ) Tj
+T*
+(of potential execution contexts.) Tj
+T*
+(    *   **Goal:** Ensure only trusted, validated scripts can execute on the page.) Tj
+T*
+() Tj
+T*
+(2.  **Implement Referrer-Policy \(Priority: Medium\)**) Tj
+T*
+(    *   Add `Referrer-Policy: strict-origin-when-cross-domain` or similar directives to control ) Tj
+T*
+(referrer information leakage. This prevents sensitive URLs from being sent with cross-site requests.) Tj
+T*
+() Tj
+T*
+(3.  **Configure Permissions-Policy \(Priority: Low/Medium\)**) Tj
+T*
+(    *   Define a policy restricting non-essential browser features for third-party scripts, reducing) Tj
+T*
+( the data exposure risk associated with trackers and analytics tools.) Tj
+T*
+() Tj
+T*
+(4.  **Review Server Headers \(Priority: Low\)**) Tj
+T*
+(    *   Consider removing or obfuscating the `Server` header to prevent technology fingerprinting ) Tj
+T*
+(unless operational monitoring requires it.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 8. Ways to Hack the System) Tj
+T*
+(*Note: The following describes potential attack vectors based on identified weaknesses for ) Tj
+T*
+ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 23 0 R >>
+endobj
+23 0 obj
+<< /Length 4167 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(educational and defensive purposes only.*) Tj
+T*
+() Tj
+T*
+(1.  **XSS Exploitation:** An attacker could craft a malicious web page or exploit an unpatched CMS ) Tj
+T*
+(vulnerability \(e.g., in Drupal, indicated by `x-drupal-cache` headers\) to inject JavaScript using ) Tj
+T*
+(the `'unsafe-inline'` directive allowed in the current CSP. This script would execute in the context) Tj
+T*
+( of legitimate users visiting compromised pages.) Tj
+T*
+(2.  **Information Leakage:** By manipulating cross-origin requests or exploiting browser caching ) Tj
+T*
+(behaviors \(indicated by `Cache-Control: public, max-age=...`\), an attacker could potentially extract) Tj
+T*
+( referrer information if it were sent with sensitive session tokens.) Tj
+T*
+(3.  **Fingerprinting Attacks:** Although no version is exposed, the presence of Cloudflare allows ) Tj
+T*
+(attackers to infer proxy behavior and potential bypass techniques for WAF rules based on known ) Tj
+T*
+(Cloudflare signatures or plugin behaviors.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 9. Tools to Use to Hack the System) Tj
+T*
+(*Note: The following tools are listed as standard industry utilities used by security professionals ) Tj
+T*
+(for authorized penetration testing.*) Tj
+T*
+() Tj
+T*
+(1.  **Burp Suite Professional:** For manual interception, proxying traffic, and fuzzing input fields) Tj
+T*
+( \(once discovered\) to test XSS or SQLi manually.) Tj
+T*
+(2.  **Nikto:** A web server scanner that checks for dangerous files/CGIs and outdated software ) Tj
+T*
+(versions. Useful if the `Server` header reveals specific vulnerable CMS components.) Tj
+T*
+(3.  **Wappalyzer / WhatWeb:** To identify technologies \(e.g., Drupal, Cloudflare\) to research known ) Tj
+T*
+(CVEs associated with those platforms.) Tj
+T*
+(4.  **OWASP ZAP \(Zed Attack Proxy\):** An open-source alternative for automated scanning and manual ) Tj
+T*
+(testing of web applications.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 10. Coverage and Limitations) Tj
+T*
+(*   **SQL Injection:** This module was skipped because the Reconnaissance phase did not identify any) Tj
+T*
+( user-supplied input parameters. Automated scanners cannot test SQLi without a known injection point) Tj
+T*
+( \(e.g., `?id=1` or login forms\). Manual testing is required to discover these vectors.) Tj
+T*
+(*   **XSS Scope:** Limited to reflected XSS on discovered links and static content. Stored XSS ) Tj
+T*
+(requires interaction with dynamic form submissions, which were not explicitly targeted in this ) Tj
+T*
+(scan's payload generation phase due to the lack of input parameters found during Recon.) Tj
+T*
+(*   **Cloudflare Proxying:** The target is served via Cloudflare proxies \(ports 80/443\). This masks ) Tj
+T*
+(the origin server details and may prevent direct connection attempts that some scanners require for ) Tj
+T*
+(deep protocol analysis.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(## 11. Overall Conclusion) Tj
+T*
+(The `https://www.hackerone.com/` domain demonstrates a generally secure posture with HTTPS ) Tj
+T*
+(enforcement, HSTS, and X-Frame-Protection enabled via Cloudflare. However, the **Medium severity ) Tj
+T*
+(finding regarding the Content-Security-Policy** is the most significant risk identified. The ) Tj
+T*
+(presence of `'unsafe-inline'` and `'unsafe-eval'` creates an unnecessary trust boundary that could ) Tj
+T*
+(be exploited to execute arbitrary code if a vulnerability exists in the content rendering engine ) Tj
+T*
+(\(e.g., Drupal\).) Tj
+T*
+() Tj
+T*
+(Immediate remediation involves tightening the CSP policy by removing permissive directives. While ) Tj
+T*
+(SQL Injection was not tested due to lack of input parameters, this is a procedural limitation rather) Tj
+T*
+( than a security flaw; manual testing remains necessary for comprehensive coverage. The missing ) Tj
+T*
+(Referrer and Permissions headers represent minor privacy risks that should be addressed in future ) Tj
+T*
+(hardening cycles.) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(FINAL INTEGRATED SUMMARY) Tj
+T*
+(==============================================================================) Tj
+T*
+ET
+endstream
+endobj
+24 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 25 0 R >>
+endobj
+25 0 obj
+<< /Length 1000 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+36 756 Td
+(Target: https://www.hackerone.com/) Tj
+T*
+(Overall Status: success) Tj
+T*
+(Scan Started UTC: 2026-08-25T17:44:08.747510+00:00) Tj
+T*
+(Scan Finished UTC: 2026-08-25T17:45:21.709466+00:00) Tj
+T*
+(Total Findings: 4) Tj
+T*
+() Tj
+T*
+(Severity Counts:) Tj
+T*
+(  Critical  : 0) Tj
+T*
+(  High      : 0) Tj
+T*
+(  Medium    : 1) Tj
+T*
+(  Low       : 2) Tj
+T*
+(  Info      : 1) Tj
+T*
+() Tj
+T*
+(Classification Counts:) Tj
+T*
+(  Finding     : 2) Tj
+T*
+(  Hardening   : 1) Tj
+T*
+(  Observation : 1) Tj
+T*
+() Tj
+T*
+(Module Status:) Tj
+T*
+(  recon            status=success      findings=0) Tj
+T*
+(  xss              status=success      findings=0) Tj
+T*
+(  sqli             status=skipped      findings=0) Tj
+T*
+(  security_config  status=success      findings=4) Tj
+T*
+() Tj
+T*
+(==============================================================================) Tj
+T*
+(END OF INTEGRATED SCAN) Tj
+T*
+(==============================================================================) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 26
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000190 00000 n 
+0000000258 00000 n 
+0000000384 00000 n 
+0000002779 00000 n 
+0000002905 00000 n 
+0000006321 00000 n 
+0000006447 00000 n 
+0000009305 00000 n 
+0000009433 00000 n 
+0000013160 00000 n 
+0000013288 00000 n 
+0000015789 00000 n 
+0000015917 00000 n 
+0000018538 00000 n 
+0000018666 00000 n 
+0000021286 00000 n 
+0000021414 00000 n 
+0000025205 00000 n 
+0000025333 00000 n 
+0000028966 00000 n 
+0000029094 00000 n 
+0000033314 00000 n 
+0000033442 00000 n 
+trailer
+<< /Size 26 /Root 1 0 R >>
+startxref
+34495
+%%EOF
