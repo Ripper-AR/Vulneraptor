@@ -1,122 +1,309 @@
-# VulnScope Lite
+# VulCheck
 
-VulnScope Lite is an integrated authorized-use security scanner that combines:
+VulCheck is an authorized-use web security scanner that runs multiple checks
+from one command and writes practical reports for later review.
 
-1. Reconnaissance
-2. Reflected XSS checks
-3. SQL injection checks
-4. Security configuration checks
+Only scan systems you own or have explicit permission to test.
 
-Only scan systems you own or are explicitly authorized to assess.
+## What It Does
 
-## Setup
+- Reconnaissance and service discovery
+- Reflected XSS checks
+- SQL injection checks
+- Security header and cookie configuration checks
+- Optional local AI analysis with Ollama
+- JSON, CSV, and PDF report exports
+
+## Requirements
+
+- Python 3.10 or newer
+- Nmap installed and available in `PATH`
+- Python packages from `requirements.txt`
+- Optional: Ollama for `--ai` reports
+
+The Python dependency `python-nmap` talks to the Nmap application, so installing
+the Python package alone is not enough. Confirm Nmap works with:
 
 ```bash
-on windoes:
-python -m pip install -r requirements.txt
------------------------------------------------------
-Install on Kali
-git clone https://github.com/sal-mah/VulCheck.git
-cd VulCheck 
-sudo apt update
-sudo apt install python3 python3-venv python3-full nmap
-sudo apt install ./vulcheck_2.0.0_all.deb
+nmap --version
+```
 
-Then test:
-vulcheck "target"
-vulcheck --help
-vulcheck --target "target"
+## Windows Setup
 
-The package installs the application under /opt/VulCheck and creates the
-vulcheck command in /usr/local/bin.
+Install Python 3.10+ from the Microsoft Store or from python.org. During setup,
+enable "Add Python to PATH" if the installer offers it.
 
-Transfer to another Kali machine
+Install Nmap using the official Windows installer, or with `winget`:
 
-Copy vulcheck_1.0.0_all.deb to the other machine, then run:
+```powershell
+winget install Insecure.Nmap
+```
 
-sudo apt update
-sudo apt install python3 python3-venv python3-full nmap
-sudo apt install ./vulcheck_2.0.0_all.deb
+Open PowerShell in the project folder:
 
-Important
-
-The package currently contains the integrated Recon + Security Configuration
-version. XSS and SQLi are represented by the integration layer as skipped
-until their scanner modules are added.
-
-Only scan systems you own or are explicitly authorized to assess.
+```powershell
 
 ```
 
-Recon uses `python-nmap`, which also requires the Nmap binary to be installed
-and available in your system path.
+Create and activate a virtual environment:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks activation for the current session:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Check the tool:
+
+```powershell
+python main.py --help
+```
+
+Run a scan:
+
+```powershell
+python main.py Target --json --csv --pdf
+```
+
+Reports are written to:
+
+```text
+reports\Target_report.json
+reports\Target_report.csv
+reports\Target_report.pdf
+```
+
+## Kali Linux Setup From Source
+
+Install system packages:
+
+```bash
+sudo apt update
+sudo apt install -y git python3 python3-venv python3-pip python3-full nmap
+```
+
+Clone the project:
+
+```bash
+git clone https://github.com/sal-mah/VulCheck.git
+cd VulCheck
+```
+
+Create and activate a virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Check the tool:
+
+```bash
+python main.py --help
+```
+
+Run a scan:
+
+```bash
+python main.py Target --json --csv --pdf
+```
+
+## Kali Linux Setup With A Debian Package
+
+If you have a built Debian package such as `vulcheck_2.0.0_all.deb`, install
+required system packages first:
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-full nmap
+```
+
+Install the package from the directory that contains the `.deb` file:
+
+```bash
+sudo apt install -y ./vulcheck_2.0.0_all.deb
+```
+
+The package installs VulCheck under `/opt/VulCheck` and creates the `vulcheck`
+command in `/usr/local/bin`.
+
+Check the installed command:
+
+```bash
+vulcheck --help
+```
+
+Run a scan:
+
+```bash
+vulcheck Target --json --csv --pdf
+```
+
+To move it to another Kali machine, copy `vulcheck_2.0.0_all.deb` to that
+machine and repeat the package install commands.
 
 ## Usage
 
-```bash
-python main.py 192.168.64.129
-python main.py http://lab.local --json reports/scan.json
-python main.py --target-file targets.txt --json reports/batch.json
-```
-
-## Tests
+Single target:
 
 ```bash
-python -m pytest -q
+python main.py Target
 ```
-<<<<<<< HEAD
 
+Save JSON, CSV, and PDF reports:
 
-## Local Ollama AI
+```bash
+python main.py Target --json --csv --pdf
+```
 
-VulnScope can optionally analyze the completed scanner report using a local
-Ollama model. The AI layer does not perform scanning; it analyzes evidence
-already produced by Recon, XSS, SQLi, and Security Configuration.
+Legacy filename arguments are accepted, but VulCheck still writes reports using
+the target name inside the `reports` folder:
 
-Install/start Ollama and make sure the model exists:
+```bash
+python main.py Target --json scan.json --pdf scan.pdf
+```
 
-```powershell
+Output:
+
+```text
+reports/Target_report.json
+reports/Target_report.pdf
+```
+
+Scan targets from a file:
+
+```bash
+python main.py --target-file targets.txt --json --csv --pdf
+```
+
+Example `targets.txt`:
+
+```text
+# One authorized target per line
+https://lab.example
+192.168.64.129
+```
+
+Batch reports use the target-file name:
+
+```text
+reports/targets_report.json
+reports/targets_report.csv
+reports/targets_report.pdf
+```
+
+## Local Ollama AI Reports
+
+VulCheck can optionally analyze completed scan evidence with a local Ollama
+model. The AI feature does not perform scanning; it only reviews the scanner
+results.
+
+Install and start Ollama, then make sure the model exists:
+
+```bash
 ollama list
 ollama run qwen3.5:4b
 ```
 
-Test the API:
+Run with AI analysis:
 
-```powershell
+```bash
+python main.py https://Target.com/ --json --pdf --ai --ai-model qwen3.5:4b
+```
+
+Use a custom Ollama URL:
+
+```bash
+python main.py https://www.Target.com/ --ai --ai-url http://127.0.0.1:11434
+```
+
+Diagnostics:
+
+```bash
 python test_ollama.py
-```
-
-Run a scan with local AI analysis:
-
-```powershell
-python main.py http://127.0.0.1:8080/WebGoat --ai
-```
-
-Select another local model:
-
-```powershell
-python main.py http://127.0.0.1:8080/WebGoat --ai --ai-model cyberuser42/DeepSeek-R1-Distill-Qwen-14B:latest
-```
-
-The default Ollama API is:
-
-```text
-http://127.0.0.1:11434
-```
-
-AI analysis is optional. VulnScope continues to produce its normal report if
-Ollama is not enabled.
-
-
-### Ollama diagnostic
-
-If the AI section reports an empty response:
-
-```powershell
 python test_ollama_generate.py
 ```
 
-The integration disables Qwen thinking for the report call and accepts
-both Ollama generate and message-style response fields.
-=======
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
+## Reports
+
+Generated reports are saved in the `reports` directory.
+
+For `https://www.Target.com/`, VulCheck creates:
+
+```text
+reports/Target_report.json
+reports/Target_report.csv
+reports/Target_report.pdf
+```
+
+For IP targets, VulCheck creates safe filenames such as:
+
+```text
+reports/192_168_64_129_report.json
+```
+
+## Tests
+
+Install dependencies first, then run:
+
+```bash
+python -m pytest -q
+```
+
+## Project Layout
+
+```text
+main.py                  CLI entry point
+core/scanner.py          Integrated scanner orchestration
+core/reporter.py         Terminal and PDF text rendering
+modules/recon.py         Reconnaissance module
+modules/xss_scanner.py   Reflected XSS module
+modules/sqli_scanner.py  SQL injection module
+modules/security_config.py
+                         Security headers and cookie checks
+modules/ollama_analyzer.py
+                         Local AI report analysis
+reports/                 Generated report output
+tests/                   Test suite
+```
+
+## Troubleshooting
+
+If Python cannot import `nmap`, reinstall the Python dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+If Nmap is not found, install the Nmap application and confirm:
+
+```bash
+nmap --version
+```
+
+If AI analysis fails, start Ollama and check that the selected model is
+available:
+
+```bash
+ollama list
+```

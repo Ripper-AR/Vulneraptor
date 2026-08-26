@@ -430,7 +430,6 @@ def print_final_summary(report: dict[str, Any]) -> None:
         )
 
 
-<<<<<<< HEAD
 
 def print_ai_detail(report: dict[str, Any]) -> None:
     ai = report.get("ai", {})
@@ -458,18 +457,14 @@ def print_ai_detail(report: dict[str, Any]) -> None:
 
 
 
-=======
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
+ 
 def print_integrated_report(report: dict[str, Any]) -> None:
     print("\n" + SEPARATOR)
     print("VULNSCOPE LITE - FULL INTEGRATED SCAN OUTPUT")
     print(SEPARATOR)
     print(f"Target: {report['target']}")
-<<<<<<< HEAD
     print("Execution Order: Recon -> XSS -> SQL Injection -> Security Config -> Ollama AI")
-=======
     print("Execution Order: Recon -> XSS -> SQL Injection -> Security Config")
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
 
     modules = report.get("modules", {})
 
@@ -482,11 +477,8 @@ def print_integrated_report(report: dict[str, Any]) -> None:
     if "security_config" in modules:
         print_security_config_detail(modules["security_config"])
 
-<<<<<<< HEAD
     print_ai_detail(report)
 
-=======
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
     print_final_summary(report)
 
     print("\n" + SEPARATOR)

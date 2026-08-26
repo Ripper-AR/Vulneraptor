@@ -59,36 +59,44 @@ def analyze_results(
     """
 
     prompt = f"""
-You are the local AI security analyst for VulnScope Lite.
-
-Analyze ONLY the security evidence contained in the JSON below.
-
-Rules:
-- Do not invent vulnerabilities, ports, services, endpoints, or evidence.
-- Do not treat a skipped or failed module as a clean result.
-- Clearly distinguish confirmed findings, hardening recommendations,
-  observations, and areas that were not assessed.
-- Explain why important findings matter.
-- Prioritize remediation by severity and practical impact.
-- Keep the report technically accurate and concise.
-- Do not perform or recommend unauthorized testing.
-
-Return a professional report with these sections:
-
-1. Executive Summary
-2. Target and Reconnaissance Analysis
-3. XSS Analysis
-4. SQL Injection Analysis
-5. Security Configuration Analysis
-6. Risk Assessment
-7. Prioritized Remediation
-8. ways to hack the system
-9.tools to use to hack the system 
-10. Coverage and Limitations
-11. Overall Conclusion
-
-VULNSCOPE REPORT:
-{json.dumps(scan_report, indent=2, ensure_ascii=False, default=str)}
+ You are the local AI security analyst for VulnScope Lite.
+ 
+ Analyze ONLY the security evidence contained in the JSON below.
+ 
+ Rules:
+ - Do not invent vulnerabilities, ports, services, endpoints, or evidence.
+ - Do not treat a skipped or failed module as a clean result.
+ - Clearly distinguish confirmed findings, hardening recommendations,
+   observations, and areas that were not assessed.
+ - Explain why important findings matter.
+ - Prioritize remediation by severity and practical impact.
+ - Keep the report technically accurate and concise.
+ - Do not perform or recommend unauthorized testing.
+ 
+ Return a professional report with these sections:
+ 
+ 1. Executive Summary
+ 2. Target and Reconnaissance Analysis
+ 3. XSS Analysis
+ 4. SQL Injection Analysis
+ 5. Security Configuration Analysis
+ 6. Risk Assessment
+ 7. Prioritized Remediation
+ 8. ways to hack the system
+ 9.tools to use to hack the system 
+ 10.if it is possible to hack the system or not
+ 11.if it contani cve or not if it contain cve then mention the cve number and the description of the cve
+ 12. Coverage and Limitations
+ 13. Overall Conclusion
+ 14. References
+ 15. Appendices
+ 16. Additional Notes
+ 17. Additional Recommendations
+ 18. Additional Observations
+ 19. Additional Findings
+ 
+ VULNSCOPE REPORT:
+ {json.dumps(scan_report, indent=2, ensure_ascii=False, default=str)}
 """
 
     payload = {
@@ -101,10 +109,10 @@ VULNSCOPE REPORT:
         "stream": False,
         # Qwen3.5 supports thinking; disabling it here makes the
         # integration return the actual report in the response field.
-        "think": False,
+        "think": True,
         "options": {
             "temperature": 0.1,
-            "num_ctx": 16384,
+            "num_ctx": 18384,
         },
     }
 

@@ -2,7 +2,12 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
-from config.scanner_config import EXECUTION_ORDER, INTEGRATION_VERSION, TOOL_NAME
+from config.scanner_config import (
+    EXECUTION_ORDER,
+    INTEGRATION_VERSION,
+    TOOL_NAME,
+)
+
 from core.results import (
     aggregate_findings,
     build_summary,
@@ -11,14 +16,16 @@ from core.results import (
     now_iso,
     scanner_error,
 )
+
 from modules.recon import run_recon_scan
 from modules.security_config import run_security_config_scan
 from modules.sqli_scanner import run_sqli_scanner
 from modules.xss_scanner import run_xss_scan
-<<<<<<< HEAD
-from modules.ollama_analyzer import analyze_results, check_ollama
-=======
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
+
+from modules.ollama_analyzer import (
+    analyze_results,
+    check_ollama,
+)
 
 
 ScannerCallable = Callable[..., dict[str, Any]]
@@ -31,33 +38,62 @@ def _run_safely(
     *args: Any,
     **kwargs: Any,
 ) -> dict[str, Any]:
+    """Run one scanner module without crashing the entire scan."""
+
     try:
         return ensure_module_result(
             module_name,
             target,
             scanner(*args, **kwargs),
         )
+
     except Exception as error:
-        return scanner_error(module_name, target, error)
+        return scanner_error(
+            module_name,
+            target,
+            error,
+        )
 
 
-<<<<<<< HEAD
 def run_integrated_scan(
     target: str,
     ai_enabled: bool = False,
     ai_model: str = "qwen3.5:4b",
     ai_url: str = "http://127.0.0.1:11434",
 ) -> dict[str, Any]:
-=======
-def run_integrated_scan(target: str) -> dict[str, Any]:
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
+
+    # ========================================================
+    # 1. Start scan
+    # ========================================================
+
     started = now_iso()
+
     modules: dict[str, dict[str, Any]] = {}
 
-    recon_result = _run_safely("recon", target, run_recon_scan, target)
+    # ========================================================
+    # 2. Recon
+    # ========================================================
+
+    recon_result = _run_safely(
+        "recon",
+        target,
+        run_recon_scan,
+        target,
+    )
+
     modules["recon"] = recon_result
 
-    web_recon = enrich_recon_for_web_scanners(recon_result)
+    # ========================================================
+    # 3. Prepare Recon data for web scanners
+    # ========================================================
+
+    web_recon = enrich_recon_for_web_scanners(
+        recon_result
+    )
+
+    # ========================================================
+    # 4. XSS Scanner
+    # ========================================================
 
     modules["xss"] = _run_safely(
         "xss",
@@ -67,6 +103,10 @@ def run_integrated_scan(target: str) -> dict[str, Any]:
         recon_data=web_recon,
     )
 
+    # ========================================================
+    # 5. SQL Injection Scanner
+    # ========================================================
+
     modules["sqli"] = _run_safely(
         "sqli",
         target,
@@ -74,6 +114,10 @@ def run_integrated_scan(target: str) -> dict[str, Any]:
         target,
         recon_data=web_recon,
     )
+
+    # ========================================================
+    # 6. Security Configuration Scanner
+    # ========================================================
 
     modules["security_config"] = _run_safely(
         "security_config",
@@ -83,18 +127,35 @@ def run_integrated_scan(target: str) -> dict[str, Any]:
         recon_data=recon_result,
     )
 
-    findings = aggregate_findings(modules)
-    summary = build_summary(findings)
+    # ========================================================
+    # 7. Aggregate findings
+    # ========================================================
+
+    findings = aggregate_findings(
+        modules
+    )
+
+    summary = build_summary(
+        findings
+    )
+
+    # ========================================================
+    # 8. Determine overall scan status
+    # ========================================================
 
     status = "success"
-    if any(result.get("status") == "error" for result in modules.values()):
+
+    if any(
+        result.get("status") == "error"
+        for result in modules.values()
+    ):
         status = "partial/error"
 
-<<<<<<< HEAD
-    report = {
-=======
-    return {
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
+    # ========================================================
+    # 9. Build report BEFORE AI
+    # ========================================================
+
+    report: dict[str, Any] = {
         "tool": TOOL_NAME,
         "integration_version": INTEGRATION_VERSION,
         "target": target,
@@ -105,10 +166,14 @@ def run_integrated_scan(target: str) -> dict[str, Any]:
         "modules": modules,
         "summary": summary,
         "findings": findings,
-<<<<<<< HEAD
+
         "ai": {
             "enabled": ai_enabled,
-            "status": "not_requested",
+            "status": (
+                "requested"
+                if ai_enabled
+                else "not_requested"
+            ),
             "model": ai_model,
             "base_url": ai_url,
             "analysis": "",
@@ -116,27 +181,104 @@ def run_integrated_scan(target: str) -> dict[str, Any]:
         },
     }
 
+    # ========================================================
+    # 10. Ollama AI Analysis
+    # ========================================================
+
     if ai_enabled:
-        if not check_ollama(ai_url):
-            report["ai"].update({
-                "status": "error",
-                "error": (
-                    "Ollama is not reachable at "
-                    f"{ai_url}. Start Ollama and try again."
-                ),
-            })
-        else:
-            ai_result = analyze_results(
-                report,
-                model=ai_model,
-                base_url=ai_url,
+
+        print()
+        print("=" * 78)
+        print("OLLAMA LOCAL AI ANALYSIS")
+        print("=" * 78)
+        print(f"Model: {ai_model}")
+        print(f"API:   {ai_url}")
+        print()
+
+        # ----------------------------------------------------
+        # Check whether Ollama is reachable
+        # ----------------------------------------------------
+
+        try:
+            ollama_available = check_ollama(
+                ai_url
             )
-            report["ai"] = {
-                "enabled": True,
-                **ai_result,
-            }
+
+        except Exception as error:
+            ollama_available = False
+
+            report["ai"]["error"] = (
+                f"Failed to check Ollama: {error}"
+            )
+
+        # ----------------------------------------------------
+        # Ollama unavailable
+        # ----------------------------------------------------
+
+        if not ollama_available:
+
+            report["ai"]["status"] = "error"
+
+            if not report["ai"]["error"]:
+                report["ai"]["error"] = (
+                    "Ollama is not reachable at "
+                    f"{ai_url}. "
+                    "Start Ollama and try again."
+                )
+
+            print(
+                "[ERROR] "
+                + report["ai"]["error"]
+            )
+
+        # ----------------------------------------------------
+        # Ollama available
+        # ----------------------------------------------------
+
+        else:
+
+            print(
+                "[+] Ollama is reachable."
+            )
+
+            print(
+                f"[+] Sending scan results to "
+                f"{ai_model}..."
+            )
+
+            try:
+
+                ai_result = analyze_results(
+                    report,
+                    model=ai_model,
+                    base_url=ai_url,
+                )
+
+                report["ai"] = {
+                    "enabled": True,
+                    **ai_result,
+                }
+
+                print(
+                    f"[+] AI analysis status: "
+                    f"{report['ai'].get('status', 'unknown')}"
+                )
+
+            except Exception as error:
+
+                report["ai"]["status"] = "error"
+
+                report["ai"]["error"] = (
+                    f"AI analysis failed: {error}"
+                )
+
+                print(
+                    f"[ERROR] "
+                    f"{report['ai']['error']}"
+                )
+
+    # ========================================================
+    # 11. Return final report
+    # ========================================================
 
     return report
-=======
-    }
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f

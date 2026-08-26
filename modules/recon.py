@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import nmap
 import requests
 import ipaddress
@@ -1432,7 +1431,7 @@ if __name__ == "__main__":
 
         print(
             "    No OS clues found."
-=======
+        )
 import nmap
 import requests
 import ipaddress
@@ -2866,5 +2865,4 @@ if __name__ == "__main__":
 
         print(
             "    No OS clues found."
->>>>>>> c687f5530f501fff24f4190a94787dd313e8f81f
         )

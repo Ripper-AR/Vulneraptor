@@ -1,28 +1,5 @@
-"""
-VulnScope Lite - Security Configuration Scanner
-
-Purpose
--------
-A machine-oriented security configuration module designed to consume
-Recon output and perform applicable web/service configuration checks.
-
-Authorized-use note
--------------------
-Run this scanner only against systems you own or are explicitly
-authorized to assess. Metasploitable 2 is suitable for an isolated lab.
-
-Integration interface
-----------------------
-    run_security_config_scan(target, recon_data=None)
-
-The module is intentionally defensive:
-- It does not perform port scanning.
-- Service checks are based on Recon context.
-- Web checks use normal HTTP(S) requests to the supplied/discovered web target.
-"""
 
 from __future__ import annotations
-
 import argparse
 import csv
 import json
